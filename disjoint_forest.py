@@ -1,5 +1,17 @@
-import numpy as np
 import numba
+
+"""
+The pointer-tree structure used by `find_root` and `union` uses 1D (i,e, flat) indices for
+the nodes of the graph structure. A negative value indicates the element in the matrix is a
+root of a connected component; the magnitude of that value indicates the total number of
+elements in that connected component. Otherwise a non-negative value is the flat-index that
+points to another element in its connected component.
+
+For example, the pointer-tree:
+    [-3, 0, 0, -2, 3]
+corresponds to a graph with two connected components. element-0 is the root of the component
+containing {0, 1, 2}. element-3 is the root of the component containing {3, 4}.
+"""
 
 
 @numba.jit(nopython=True)
