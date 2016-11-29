@@ -1,4 +1,4 @@
-import numba
+import numba  # most likely requires numba 0.29 to support recursion
 
 """
 The pointer-tree structure used by `find_root` and `union` uses 1D (i,e, flat) indices for
